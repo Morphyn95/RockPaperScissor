@@ -28,9 +28,12 @@ document.getElementById("scissor").onclick = function () {
 }
 
 
-// Rock vs paper = Paper
+// Rock vs paper = Paper 
+// 0 vs 1 = 1
 // Paper vs scissor = Scissor
+// 1 vs 2 = 2
 // Scissor vs rock = Rock
+// 2 vs 0 = 0
 // Lose c'est un ligne
 // Egal c'est une ligne
 // Rock : 0
