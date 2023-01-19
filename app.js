@@ -33,6 +33,9 @@ document.getElementById("scissor").onclick = function () {
 // Scissor vs rock = Rock
 // Lose c'est un ligne
 // Egal c'est une ligne
+// Rock : 0
+// Paper : 1
+// Scissor : 2
 function battle(choice) {
     console.log(choice);
 }
