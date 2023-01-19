@@ -31,8 +31,11 @@ p i {
 
 .result {
     border: 1px solid white;
+    text-align: center;
     border-radius: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     font-size: 1.5em;
+    padding: 2vh;
 }
