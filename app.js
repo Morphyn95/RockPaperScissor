@@ -14,15 +14,25 @@ document.getElementById("rock").onclick = function () {
 }
 
 document.getElementById("paper").onclick = function () {
-    battle("paper") 
+    battle({
+        text: "paper", // c'est un string
+        value: 1, // c'est un int
+})
 }
 
 document.getElementById("scissor").onclick = function () {
-    battle("scissor") // c'est un string
+    battle({
+        text: "scissor", // c'est un string
+        value: 2, // c'est un int
+})
 }
-
 
 
 function battle(choice) {
     console.log(choice);
 }
+
+function getRandomInt() {
+    return Math.floor(Math.random() * 3);
+}
+
