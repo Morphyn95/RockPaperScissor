@@ -41,9 +41,17 @@ document.getElementById("scissor").onclick = function () {
 // Scissor : 2
 function battle(choice) {
     console.log(choice);
+    logBattle();
 }
 
 function getRandomInt() {
     return Math.floor(Math.random() * 3);
 }
 
+function logBattle() {
+    let history = document.getElementById('history');
+    console.log('history', history);
+    let htmlElement = document.createElement('div');
+    htmlElement.innerHTML = "Je suis dans l'historique";
+    history.append(htmlElement);
+}
