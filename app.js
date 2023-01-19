@@ -41,9 +41,46 @@ document.getElementById("scissor").onclick = function () {
 // Scissor : 2
 function battle(choice) {
     console.log(choice);
+    let computerChoice = getRandomInt();
+    console.log(computerChoice);
+
+    // if choice(value) = 1 and computerChoice = 0 then 1="paper won vs rock" 
+    // if choice(value) = computerChoice then result="draw"
+    // else result="defeat"
+
+    if(choice.value === computerChoice) {
+        console.log("draw");
+    } else if(choice.value === 1 && computerChoice === 0) {
+        console.log("paper won vs rock");
+    } else if(choice.value === 2 && computerChoice === 1) {
+        console.log("scissor won vs paper");
+    } else if(choice.value === 0 && computerChoice === 2) {
+        console.log("rock won vs scissor");
+    } else {
+        console.log("defeat");
+    }
+    // if choice(value) = computerChoice then result="draw"
+    // else result="defeat"
+
+    // if(condition) {
+        
+    // }
+    
+    // if(condition && condition) {
+        
+    // } else if(condition) {
+
+    // } else {
+
+    // }
+
+    // if(condition || condition) {
+        
+    // } else {
+
+    // }
 }
 
 function getRandomInt() {
     return Math.floor(Math.random() * 3);
 }
-
