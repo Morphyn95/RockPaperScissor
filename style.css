@@ -5,8 +5,13 @@ body {
 h1, h2 {
     color: white;
     text-align: center;
+    margin:4vh;
 }
 
 p {
     color: white;
+    font-size: 6em;
+    display: flex;
+    justify-content: space-around;
+
 }
