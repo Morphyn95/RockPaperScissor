@@ -27,7 +27,6 @@ document.getElementById("scissor").onclick = function () {
 })
 }
 
-
 // Rock vs paper = Paper 
 // 0 vs 1 = 1
 // Paper vs scissor = Scissor
@@ -40,6 +39,7 @@ document.getElementById("scissor").onclick = function () {
 // Paper : 1
 // Scissor : 2
 function battle(choice) {
+    let resultat;
     console.log(choice);
     let computerChoice = getRandomInt();
     console.log(computerChoice);
@@ -49,47 +49,27 @@ function battle(choice) {
     // else result="defeat"
 
     if(choice.value === computerChoice) {
-        console.log("draw");
+        resultat = "Draw";
     } else if(choice.value === 1 && computerChoice === 0) {
-        console.log("paper won vs rock");
+        resultat = "Paper won vs Rock";
     } else if(choice.value === 2 && computerChoice === 1) {
-        console.log("scissor won vs paper");
+        resultat = "Scissor won vs Paper";
     } else if(choice.value === 0 && computerChoice === 2) {
-        console.log("rock won vs scissor");
+        resultat = "Rock won vs Scissor";
     } else {
-        console.log("defeat");
+        resultat = "Defeat";
     }
-    // if choice(value) = computerChoice then result="draw"
-    // else result="defeat"
-
-    // if(condition) {
-        
-    // }
-    
-    // if(condition && condition) {
-        
-    // } else if(condition) {
-
-    // } else {
-
-    // }
-
-    // if(condition || condition) {
-        
-    // } else {
-
-    // }
-    logBattle();
+   
+    logBattle(resultat);
 }
 
 function getRandomInt() {
     return Math.floor(Math.random() * 3);
 }
 
-function logBattle() {
+function logBattle(resultat) {
     let history = document.getElementById('history');
-    console.log('history', history);
     let htmlElement = document.createElement('div');
-    htmlElement.innerHTML = "Je suis dans l'historique";
+    htmlElement.innerHTML = resultat;
     history.append(htmlElement);
 }
