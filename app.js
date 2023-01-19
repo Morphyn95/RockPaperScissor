@@ -28,6 +28,11 @@ document.getElementById("scissor").onclick = function () {
 }
 
 
+// Rock vs paper = Paper
+// Paper vs scissor = Scissor
+// Scissor vs rock = Rock
+// Lose c'est un ligne
+// Egal c'est une ligne
 function battle(choice) {
     console.log(choice);
 }
