@@ -1,75 +1,101 @@
-// const paper = {
-//     text: "paper",
-//     value: 1
-// }
-// document.getElementById("paper").onclick = battle(paper.text) // paper est une variable, or paper n'existe pas
-// document.getElementById("paper").onclick = battle(.paper) // warning de vscode. Mauvaise syntaxe. .paper c'est l'attribut d'un objet 
-
+// TODO:
+// Faire une classe Weapon avec les attributs text, value & class
+// Et instancier des objets rock, paper, scissor, spock, lizard
 
 document.getElementById("rock").onclick = function () {
-    battle({
-        text: "rock", // c'est un string
-        value: 0, // c'est un int
-    }) 
-}
+  battle({
+    text: "rock",
+    value: 0,
+    class: ["fa-solid", "fa-hand-back-fist"],
+  });
+};
 
 document.getElementById("paper").onclick = function () {
-    battle({
-        text: "paper", // c'est un string
-        value: 1, // c'est un int
-})
-}
+  battle({
+    text: "paper",
+    value: 1,
+    class: ["fa-solid", "fa-hand"],
+  });
+};
 
 document.getElementById("scissor").onclick = function () {
-    battle({
-        text: "scissor", // c'est un string
-        value: 2, // c'est un int
-})
-}
+  battle({
+    text: "scissor",
+    value: 2,
+    class: ["fa-solid", "fa-hand-scissors"],
+  });
+};
 
-// Rock vs paper = Paper 
-// 0 vs 1 = 1
-// Paper vs scissor = Scissor
-// 1 vs 2 = 2
-// Scissor vs rock = Rock
-// 2 vs 0 = 0
-// Lose c'est un ligne
-// Egal c'est une ligne
-// Rock : 0
-// Paper : 1
-// Scissor : 2
 function battle(choice) {
-    let resultat;
-    console.log(choice);
-    let computerChoice = getRandomInt();
-    console.log(computerChoice);
-
-    // if choice(value) = 1 and computerChoice = 0 then 1="paper won vs rock" 
-    // if choice(value) = computerChoice then result="draw"
-    // else result="defeat"
-
-    if(choice.value === computerChoice) {
-        resultat = "Draw";
-    } else if(choice.value === 1 && computerChoice === 0) {
-        resultat = "Paper won vs Rock";
-    } else if(choice.value === 2 && computerChoice === 1) {
-        resultat = "Scissor won vs Paper";
-    } else if(choice.value === 0 && computerChoice === 2) {
-        resultat = "Rock won vs Scissor";
-    } else {
-        resultat = "Defeat";
-    }
-   
-    logBattle(resultat);
+  let resultat;
+  let computerChoice = buildComputerChoice();
+  if (choice.value === computerChoice.value) {
+    resultat = "Draw";
+  } else if (choice.value === 1 && computerChoice.value === 0) {
+    resultat = "Paper won vs Rock";
+  } else if (choice.value === 2 && computerChoice.value === 1) {
+    resultat = "Scissor won vs Paper";
+  } else if (choice.value === 0 && computerChoice.value === 2) {
+    resultat = "Rock won vs Scissor";
+  } else {
+    resultat = "Defeat";
+  }
+  logBattle(resultat, choice, computerChoice);
 }
 
 function getRandomInt() {
-    return Math.floor(Math.random() * 3);
+  return Math.floor(Math.random() * 3);
 }
 
-function logBattle(resultat) {
-    let history = document.getElementById('history');
-    let htmlElement = document.createElement('div');
-    htmlElement.innerHTML = resultat;
-    history.append(htmlElement);
+function buildComputerChoice() {
+  let value = getRandomInt();
+  let computerChoice = {
+    value: value,
+    class: ["fa-solid", "fa-hand"],
+  };
+  if (!value) {
+    computerChoice.text = "rock";
+    computerChoice.class[1] += "-back-fist";
+  } else if (value === 1) {
+    computerChoice.text = "paper";
+  } else {
+    computerChoice.text = "scissor";
+    computerChoice.class[1] += "-scissors";
+  }
+  return computerChoice;
+}
+
+// TODO:
+// Compte le nombre de points pour le joueur et l'ordi
+function logBattle(resultat, player, computer) {
+  let color;
+  switch (resultat) {
+    case "Draw":
+      color = "orange";
+      break;
+    case "Defeat":
+      color = "red";
+      break;
+    default:
+      color = "green";
+      resultat = "Win";
+      break;
+  }
+  let history = document.getElementById("history");
+  let resultContainer = document.createElement("div");
+  resultContainer.style.display = "flex";
+  resultContainer.style.justifyContent = "space-around";
+  let htmlElement = document.createElement("div");
+  let playerIcon = document.createElement("i");
+  playerIcon.classList.add(player.class[0]);
+  playerIcon.classList.add(player.class[1]);
+  let computerIcon = document.createElement("i");
+  computerIcon.classList.add(computer.class[0]);
+  computerIcon.classList.add(computer.class[1]);
+  htmlElement.style.color = color;
+  htmlElement.innerHTML = resultat;
+  resultContainer.append(playerIcon);
+  resultContainer.append(htmlElement);
+  resultContainer.append(computerIcon);
+  history.prepend(resultContainer);
 }

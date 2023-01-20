@@ -20,6 +20,11 @@ p i {
     cursor: pointer;
 }
 
+#history {
+    height: 25vh;
+    overflow-y: scroll;
+}
+
 .versus {
     border: 1px solid white;
     padding: 2vh;
