@@ -2,6 +2,20 @@
 // Faire une classe Weapon avec les attributs text, value & class
 // Et instancier des objets rock, paper, scissor, spock, lizard
 
+class Weapon {
+  constructor(text, value, className) {
+    this.text = text;
+    this.value = value;
+    this.className = className;
+  }
+}
+
+let rock = new Weapon("Rock", 1, "rock-class");
+let paper = new Weapon("Paper", 2, "paper-class");
+let scissors = new Weapon("Scissors", 3, "scissors-class");
+let spock = new Weapon("Spock", 4, "spock-class");
+let lizard = new Weapon("Lizard", 5, "lizard-class");
+
 document.getElementById("rock").onclick = function () {
   battle({
     text: "rock",
@@ -67,6 +81,22 @@ function buildComputerChoice() {
 
 // TODO:
 // Compte le nombre de points pour le joueur et l'ordi
+
+let playerScore = 0;
+let computerScore = 0;
+
+function logBattle(result, player, computer) {
+  if (result === "win") {
+      playerScore++;
+  } else if (result === "lose") {
+      computerScore++;
+  } else if(result === "draw"){
+    console.log("draw")
+}
+document.getElementById("playerScore").innerHTML = playerScore;
+document.getElementById("computerScore").innerHTML = computerScore;
+}
+
 function logBattle(resultat, player, computer) {
   let color;
   switch (resultat) {
@@ -81,6 +111,7 @@ function logBattle(resultat, player, computer) {
       resultat = "Win";
       break;
   }
+
   let history = document.getElementById("history");
   let resultContainer = document.createElement("div");
   resultContainer.style.display = "flex";
